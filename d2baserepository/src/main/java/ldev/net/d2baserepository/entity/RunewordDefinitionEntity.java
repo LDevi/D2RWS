@@ -9,6 +9,4 @@ public class RunewordDefinitionEntity {
     String name;
     Boolean complete;
     Boolean server;
-
-    List<ItemTypeEntity> compatibleItemTypes;
 }

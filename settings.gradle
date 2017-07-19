@@ -1,1 +1,1 @@
-include ':app', ':d2baseloader', ':d2baserepository'
+include ':d2rw-android', ':d2baseloader', ':d2baserepository'

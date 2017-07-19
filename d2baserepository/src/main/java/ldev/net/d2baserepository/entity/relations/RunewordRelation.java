@@ -14,11 +14,11 @@ import ldev.net.d2baserepository.entity.RunewordRune;
 public class RunewordRelation {
     @Embedded
     RunewordDefinitionEntity runewordDefinitionEntity;
+
     @Relation(parentColumn = "name", entityColumn = "parentRuneword", entity = RunewordPropertyParamEntity.class)
     List<RunewordPropertyParamEntity> runewordProperties;
-
-    @Relation(parentColumn = "name", entityColumn = "runewordName", entity = RunewordRune.class, projection = "runeCode")
-    List<String> runeCompoIds;
-    @Relation(parentColumn = "name", entityColumn = "runewordName", entity = RunewordItem.class, projection = "itemCode")
-    List<String> itemTypeIds;
+    @Relation(parentColumn = "name", entityColumn = "runewordName")
+    List<RunewordRune> runeCompo;
+    @Relation(parentColumn = "name", entityColumn = "runewordName")
+    List<RunewordItem> itemTypes;
 }
