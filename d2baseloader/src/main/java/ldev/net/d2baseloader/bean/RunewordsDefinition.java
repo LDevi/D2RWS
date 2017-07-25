@@ -4,7 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 
 import java.io.Serializable;
 
-public class RunewordDefinition implements Serializable {
+public class RunewordsDefinition implements Serializable, FromCSVDefinition {
 
     @CsvBindByName
     String name;

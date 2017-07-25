@@ -69,7 +69,7 @@
     <string name="wn_bst">Battle Staff</string>
     <string name="wn_wst">War Staff</string>
     <string name="wn_sbw">Short Bow</string>
-    <string name="wn_hbw">Hunter&apos;s Bow</string>
+    <string name="wn_hbw">Hunter\'s Bow</string>
     <string name="wn_lbw">Long Bow</string>
     <string name="wn_cbw">Composite Bow</string>
     <string name="wn_sbb">Short Battle Bow</string>
@@ -88,7 +88,7 @@
     <string name="wn_opl">Fulminating Potion</string>
     <string name="wn_d33">decoy dagger</string>
     <string name="wn_g33">Gidbinn</string>
-    <string name="wn_leg">Wirt&apos;s Leg</string>
+    <string name="wn_leg">Wirt\'s Leg</string>
     <string name="wn_hdm">Horadric Malus</string>
     <string name="wn_hfh">Hellforge Hammer</string>
     <string name="wn_hst">Horadric Staff</string>

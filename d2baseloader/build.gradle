@@ -3,6 +3,7 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.opencsv:opencsv:3.9'
+
 }
 
 sourceCompatibility = "1.7"

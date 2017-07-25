@@ -2,7 +2,7 @@ package ldev.net.d2baseloader.bean;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class WeaponsDefinition {
+public class WeaponsDefinition implements FromCSVDefinition {
 
     @CsvBindByName
     String name;
