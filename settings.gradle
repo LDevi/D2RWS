@@ -1,1 +1,1 @@
-include ':d2rw-android', ':d2baseloader', ':d2baserepository'
+include ':d2rw-repository', ':d2rw-core', ':d2rw-presentation'
