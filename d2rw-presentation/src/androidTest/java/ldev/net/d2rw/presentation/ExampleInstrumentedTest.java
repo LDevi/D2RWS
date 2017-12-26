@@ -1,4 +1,4 @@
-package training.ldev.net.d2rw.presentation;
+package ldev.net.d2rw.presentation;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

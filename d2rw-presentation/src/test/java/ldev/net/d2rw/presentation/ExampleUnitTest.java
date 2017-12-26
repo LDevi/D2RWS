@@ -1,4 +1,4 @@
-package training.ldev.net.d2rw.presentation;
+package ldev.net.d2rw.presentation;
 
 import org.junit.Test;
 
