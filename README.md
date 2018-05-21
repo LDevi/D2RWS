@@ -2,14 +2,14 @@
  
 Diablo 2 App Assistant (D22A) purpose is to provide a mobile app to help 'Diablo® II: Lord of Destruction®''s players by providing a set of information about game objects and mechanisms such as  runes,runewords, item search tools, breakpoints calculator...
 
-The project is still under development and is not yet released. For the time being, it's only available on Android mobile platform ( starting from 4.1), iOS App may come later.
+The project is still under development and is not yet released. For the time being, it's only available on Android mobile platform (starting from [4.1 Jelly Bean](https://developer.android.com/about/versions/jelly-bean#android-41)), iOS App may come later.
                                         	
 
 ## Table of Contents
 
 - [Install](#install)
-- [Content, features and usage](#content,-features-and-usage)
-- [Road map and planned features](#Road-map-and-planned-features)
+- [Content, features and usage](#content-features-and-usage)
+- [Road map and planned features](#road-map-and-planned-features)
 - [Contribute](#contribute)
 - [Copyrights](#copyrights)
 
@@ -39,13 +39,13 @@ Since this project is based on the content of the game `Diablo® II` and `Diablo
 - [Blizzard legal FAQ](http://us.blizzard.com/en-us/company/about/legal-faq.html)
 - [Diablo II copyright notices](http://us.blizzard.com/en-us/company/about/copyrightnotices.html)
 
-> ####Diablo® II
+**Diablo® II**
 >
 > ©2000 Blizzard Entertainment, Inc. All rights reserved.
 > Diablo and Blizzard Entertainment are trademarks or registered trademarks of Blizzard
 > Entertainment, Inc. in the U.S. and/or other countries.
->
-> ####Diablo® II: Lord of Destruction®
+
+**Diablo® II: Lord of Destruction®**
 >
 > ©2001 Blizzard Entertainment, Inc. All rights reserved.
 > Diablo, Lord of Destruction and Blizzard Entertainment are trademarks or registered
@@ -53,7 +53,7 @@ Since this project is based on the content of the game `Diablo® II` and `Diablo
 
 ### For all other files 
 GNU GPLv3 applies and will be recalled at the beginning of each file by the following insert :
- > Copyright 2018 LDevi - louis.devineau@loudev.net.
+ > Copyright 2018 Louis Devineau.
  > This file is part of Diablo-2-App-Assistant.
  >
  >     Diablo-2-App-Assistant is free software: you can redistribute it and/or modify
