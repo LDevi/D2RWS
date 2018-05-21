@@ -16,4 +16,16 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+package ldev.net.d2.app.assistant.android.infra.dagger.component
+
+import dagger.Component
+import ldev.net.d2.app.assistant.android.core.usecase.SearchForRunesUseCase
+import ldev.net.d2.app.assistant.android.infra.dagger.module.usecase.UseCasesModule
+import ldev.net.d2.app.assistant.android.infra.dagger.scope.SingleIn
+
+@SingleIn(AppCoreComponent::class)
+@Component(dependencies = [CoreComponent::class], modules = [UseCasesModule::class])
+interface AppCoreComponent {
+    var searchForRunesUseCase: SearchForRunesUseCase
+}
+

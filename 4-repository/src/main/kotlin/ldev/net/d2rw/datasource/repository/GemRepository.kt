@@ -16,4 +16,16 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+package ldev.net.d2rw.datasource.repository
+
+import ldev.net.d2.items.core.datasource.entity.GemDataSource
+import ldev.net.d2.items.core.entity.Gem
+import ldev.net.d2.items.core.entity.Rune
+import ldev.net.d2rw.datasource.adapter.toGem
+import ldev.net.d2rw.datasource.adapter.toRune
+import ldev.net.d2rw.datasource.local.room.database.D2RWDatabase
+
+class GemRepository constructor(val database: D2RWDatabase) : GemDataSource {
+    override fun getAllGems(): List<Gem> = database.gemDao().getAllGems().map { it.toGem() }
+    override fun getAllRunes(): List<Rune> = database.gemDao().getAllRunes().map { it.toRune() }
+}

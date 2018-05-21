@@ -16,4 +16,15 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+package android.arch.persistence.db.framework;
+
+import android.arch.persistence.db.SupportSQLiteOpenHelper;
+
+public class AssetSQLiteOpenHelperFactory
+        implements SupportSQLiteOpenHelper.Factory {
+    @Override
+    public SupportSQLiteOpenHelper create(SupportSQLiteOpenHelper.Configuration configuration) {
+        return new AssetSQLiteOpenHelper(configuration.context, configuration.name,
+                configuration.callback.version, configuration.callback);
+    }
+}

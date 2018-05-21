@@ -16,4 +16,25 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+package ldev.net.d2.app.assistant.android.infra.dagger.component
+
+import android.app.Application
+import android.content.Context
+import dagger.BindsInstance
+import dagger.Component
+import ldev.net.d2.app.assistant.android.infra.dagger.module.AppModule
+import javax.inject.Singleton
+
+@Singleton
+@Component(modules = [AppModule::class])
+interface AppComponent {
+    val context: Context
+
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: Application): Builder
+
+        fun build(): AppComponent
+    }
+}

@@ -1,8 +1,36 @@
+/*
+ * Copyright 2018 Louis Devineau.
+ * This file is part of Diablo-2-App-Assistant.
+ *
+ *     Diablo-2-App-Assistant is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Diablo-2-App-Assistant is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 buildscript {
+    project.ext {
+        path_build_conf_file = "$projectDir/conf/build/gradle/common"
+        path_android_build_conf_file = "$projectDir/conf/build/gradle/android"
+    }
+    apply from: "$path_build_conf_file/script-git-version.gradle"
+    apply from: "$path_build_conf_file/var.gradle"
+    apply from: "$path_android_build_conf_file/var.gradle"
+
+
     repositories {
-        maven { url 'https://maven.google.com' }
         jcenter()
+        google()
         maven {
             url "https://plugins.gradle.org/m2/"
         }
@@ -10,17 +38,14 @@ buildscript {
     dependencies {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "com.android.tools.build:gradle:$dep_gradle_android_plugin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$dep_kotlin_version"
     }
 }
 allprojects {
     repositories {
-        jcenter()
-        maven { url 'https://maven.google.com' }
+        google()
         mavenCentral()
+        jcenter()
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

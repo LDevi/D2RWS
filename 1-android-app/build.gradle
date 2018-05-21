@@ -1,0 +1,68 @@
+/*
+ * Copyright 2018 Louis Devineau.
+ * This file is part of Diablo-2-App-Assistant.
+ *
+ *     Diablo-2-App-Assistant is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Diablo-2-App-Assistant is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+android {
+
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
+    defaultConfig {
+        versionCode gitVersionCodeTime
+        //versionCode gitVersionCode
+        versionName gitVersionName
+        applicationId "ldev.net.d2.app.assistant.android"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':0-infra')
+    implementation project(':2-android-feature-runes')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$dep_kotlin_version"
+
+    implementation "android.arch.lifecycle:extensions:$dep_android_lifecycle_version"
+    implementation "com.android.support:appcompat-v7:$dep_android_support_library_version"
+
+    testImplementation "junit:junit:$dep_test_junit_version"
+    androidTestImplementation "com.android.support.test:runner:$dep_android_test_support_test_runner_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$dep_android_test_esspresso_core_version"
+
+}
+repositories {
+    mavenCentral()
+}
+

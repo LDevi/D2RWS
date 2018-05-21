@@ -16,4 +16,15 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+package ldev.net.d2.app.assistant.android.infra.dagger.module
+
+import android.app.Application
+import android.content.Context
+import dagger.Module
+import dagger.Provides
+
+@Module
+class AppModule {
+    @Provides
+    fun provideContext(app: Application): Context = app.applicationContext
+}

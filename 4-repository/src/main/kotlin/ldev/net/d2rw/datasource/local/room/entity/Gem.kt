@@ -16,4 +16,15 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+package ldev.net.d2rw.datasource.local.room.entity
+
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+
+@Entity(tableName = "gems")
+data class Gem(
+        @ColumnInfo(name = "code")
+        @PrimaryKey var code: String,
+        @ColumnInfo(name = "letter") var letter: String?
+)

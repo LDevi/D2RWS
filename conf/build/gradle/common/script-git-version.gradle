@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.ajoberstar:grgit:1.5.0'
+    }
+}
+
+/*
+ * Copyright 2018 Louis Devineau.
+ * This file is part of Diablo-2-App-Assistant.
+ *
+ *     Diablo-2-App-Assistant is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Diablo-2-App-Assistant is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+import org.ajoberstar.grgit.Grgit
+
+/**
+ * git.describe()
+ *
+ * Find the most recent tag that is reachable from HEAD. If the tag points to the commit,
+ * then only the tag is shown. Otherwise, it suffixes the tag name with the number of additional
+ * commits on top of the tagged object and the abbreviated object name of the most recent commit.
+ *
+ * More info: https://git-scm.com/docs/git-describe
+ */
+
+ext {
+    git = Grgit.open(currentDir: projectDir)
+    gitVersionName = git.describe()
+    gitVersionCode = git.tag.list().size()
+    gitVersionCodeTime = git.head().time
+}
+
+task printVersion() << {
+    println("Version Name: $gitVersionName")
+    println("Version Code: $gitVersionCode")
+    println("Version Code Time: $gitVersionCodeTime")
+}

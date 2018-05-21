@@ -16,4 +16,21 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+project.ext {
+    compile_sdk_version = 26
+    min_sdk_version = 15
+    target_sdk_version = 26
+    build_tools_version = "27.0.3"
+}
+
+project.ext {
+    dep_android_anko_version = "0.10.4"
+    dep_android_support_library_version = "27.1.1"
+    dep_android_constraint_layout_version = '1.1.0'
+    dep_android_lifecycle_version = "1.1.1"
+    dep_android_test_support_test_runner_version = "1.0.1"
+    dep_android_test_esspresso_core_version = "3.0.1"
+    dep_android_room_version = "1.1.0"
+
+
+}

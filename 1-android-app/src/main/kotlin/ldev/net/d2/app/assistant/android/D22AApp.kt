@@ -16,4 +16,26 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+package ldev.net.d2.app.assistant.android
+
+import android.app.Activity
+import android.app.Application
+import dagger.android.AndroidInjector
+import dagger.android.HasActivityInjector
+import ldev.net.d2.app.assistant.android.infra.AppInfra
+
+
+class D22AApp : Application(), HasActivityInjector {
+
+    private lateinit var activityInjector: AndroidInjector<Activity>
+
+    override fun activityInjector(): AndroidInjector<Activity> = activityInjector
+
+    override fun onCreate() {
+        super.onCreate()
+        val d2RWAppInfra = AppInfra(this)
+        activityInjector = d2RWAppInfra.activityInjector
+    }
+
+
+}

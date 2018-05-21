@@ -16,4 +16,18 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':1-android-app', ':2-android-feature-runes', ':3-app-use-cases', ':5-domain', ':4-repository', ':0-infra', ':2-android-common-resources'
+package ldev.net.d2.app.assistant.android.infra.dagger.component
+
+import dagger.Component
+import ldev.net.d2.app.assistant.android.infra.dagger.module.core.GemServiceModule
+import ldev.net.d2.app.assistant.android.infra.dagger.module.core.RuneServiceModule
+import ldev.net.d2.app.assistant.android.infra.dagger.scope.SingleIn
+import ldev.net.d2.items.core.service.entity.GemService
+import ldev.net.d2.items.core.service.entity.RuneService
+
+@SingleIn(CoreComponent::class)
+@Component(dependencies = [DataSourceComponent::class], modules = [GemServiceModule::class, RuneServiceModule::class])
+interface CoreComponent {
+    var gemService: GemService
+    var runeService: RuneService
+}
