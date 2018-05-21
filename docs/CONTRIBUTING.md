@@ -12,7 +12,7 @@ In any case, if you want to participate you can open
 
 ## Sending your contribution (code, any documents, images resources...)
 ### Gitflow
-The development flow used on this project is based on ![this blog post by Vincent Driessen](http://nvie.com/posts/a-successful-git-branching-model).
+The development flow used on this project is based on [this blog post by Vincent Driessen](http://nvie.com/posts/a-successful-git-branching-model).
 
 In a few words :
 
