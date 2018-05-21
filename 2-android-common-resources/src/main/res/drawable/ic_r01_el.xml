@@ -1,0 +1,45 @@
+<!--
+  ~ Copyright 2018 Louis Devineau.
+  ~ This file is part of Diablo-2-App-Assistant.
+  ~
+  ~     Diablo-2-App-Assistant is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Diablo-2-App-Assistant is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="24"
+    android:viewportWidth="24"
+    tools:ignore="VectorRaster"
+    tools:keep="@drawable/ic_r01_el">
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="nonZero"
+        android:pathData="M8.8329,3.7882C3.3116,5.4429 2.9599,9.7752 3.7704,14.0585C4.295,16.8326 5.539,20.1676 2.4987,22.0004C9.3033,19.7068 16.7869,24.3102 21.3743,14.1435C22.035,12.6796 19.8675,10.6793 19.5873,12.8576C18.7503,19.3438 8.4651,21.6908 6.6596,19.0145C4.5867,15.9436 3.8477,5.7385 9.1937,5.4557C10.8655,5.3685 9.9973,3.4391 8.8329,3.7882Z" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M17.2192,1.9997C13.3166,3.3565 10.6787,10.101 11.1456,12.9088"
+        android:strokeColor="#000000"
+        android:strokeWidth="1" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M20.6676,4.3375C17.2285,5.6175 14.2862,7.9261 13.5645,14.8312"
+        android:strokeColor="#000000"
+        android:strokeWidth="1" />
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="nonZero"
+        android:pathData="M12.7339,17.4128C12.7337,17.4152 12.7334,17.4175 12.7332,17.4198C12.6632,18.1717 11.7849,18.7125 10.7863,18.6178C9.7888,18.5232 9.0245,17.8266 9.0945,17.0747C9.1645,16.3228 10.044,15.7821 11.0415,15.8767C12.0309,15.9705 12.7916,16.6563 12.7348,17.4024" />
+</vector>
