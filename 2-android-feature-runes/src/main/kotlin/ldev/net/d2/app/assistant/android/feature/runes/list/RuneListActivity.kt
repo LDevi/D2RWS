@@ -41,6 +41,8 @@ class RuneListActivity : AppCompatActivity() {
     protected lateinit var runeListViewModelFactory: ViewModelFactory<RuneListViewModel>
     private lateinit var runeListViewModel: RuneListViewModel
 
+    data class Model(val runeList: List<Rune>)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -51,7 +53,7 @@ class RuneListActivity : AppCompatActivity() {
         runesRecyclerView.adapter = SocketableAdapter()
         runeListViewModel.runeList.observe(this, Observer {
             if (it != null) {
-                (runesRecyclerView.adapter as SocketableAdapter).updateData(it)
+                (runesRecyclerView.adapter as SocketableAdapter).updateData(it.runeList)
             }
         })
         doAsync {

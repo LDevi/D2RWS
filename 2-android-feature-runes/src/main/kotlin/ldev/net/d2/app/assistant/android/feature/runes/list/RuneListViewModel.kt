@@ -26,9 +26,12 @@ import javax.inject.Inject
 
 class RuneListViewModel @Inject constructor(var searchForRunesUseCase: SearchForRunesUseCase) : ViewModel() {
 
-    var runeList: MutableLiveData<List<Rune>> = MutableLiveData()
+    var runeList: MutableLiveData<RuneListActivity.Model> = MutableLiveData()
 
     fun loadRunes() {
-        runeList.postValue(searchForRunesUseCase.getAllAvailableRunes())
+        runeList.postValue(searchForRunesUseCase.getAllAvailableRunes().toModel())
     }
+
+    private fun List<Rune>.toModel(): RuneListActivity.Model = RuneListActivity.Model(this)
 }
+
