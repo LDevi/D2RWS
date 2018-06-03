@@ -16,14 +16,19 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ldev.net.d2rw.datasource.repository
+package ldev.net.d2.app.assistant.android.feature.runes.details
 
-import ldev.net.d2.items.core.datasource.DataSource
-import ldev.net.d2.items.core.datasource.entity.GemDataSource
-import ldev.net.d2rw.datasource.local.room.database.D2RWDatabase
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
+import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
+import javax.inject.Inject
 
-class DataSourceImpl(val database: D2RWDatabase) : DataSource {
-    override var gemDataSource: GemDataSource
-        get() = GemRepository(database)
-        set(value) {}
+class RuneDetailsViewModel @Inject constructor(var searchForRunesUseCase: SearchForRunesUseCase) : ViewModel() {
+
+    var details: MutableLiveData<RuneDetailsActivity.Model> = MutableLiveData()
+
+    fun loadDetails(runeId: String) {
+        val rune = searchForRunesUseCase.getRune(runeId)
+        details.postValue(RuneDetailsActivity.Model(rune.id, rune.id.substring(1).toInt(), rune.name, 0))
+    }
 }

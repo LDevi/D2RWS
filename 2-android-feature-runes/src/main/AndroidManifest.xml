@@ -23,5 +23,6 @@
         <activity
             android:name=".runes.list.RuneListActivity"
             android:label="@string/list_of_runes_title" />
+        <activity android:name=".runes.details.RuneDetailsActivity" />
     </application>
 </manifest>

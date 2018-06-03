@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018 Louis Devineau.
+  ~ This file is part of Diablo-2-App-Assistant.
+  ~
+  ~     Diablo-2-App-Assistant is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Diablo-2-App-Assistant is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/runeImage"
+        android:layout_width="76dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_r11_amn"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/runeName"
+        android:layout_width="185dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="80dp"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/runeImage"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <TextView
+        android:id="@+id/runeNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/runeName"
+        app:layout_constraintTop_toBottomOf="@+id/runeName" />
+
+    <TextView
+        android:id="@+id/runeDropChance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/runeNumber"
+        app:layout_constraintTop_toBottomOf="@+id/runeNumber"
+        app:layout_constraintVertical_bias="0.154" />
+</android.support.constraint.ConstraintLayout>

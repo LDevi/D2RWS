@@ -19,9 +19,9 @@
 package ldev.net.d2.app.assistant.android.infra.dagger.component
 
 import dagger.Component
-import ldev.net.d2.app.assistant.android.core.usecase.SearchForRunesUseCase
 import ldev.net.d2.app.assistant.android.infra.dagger.module.usecase.UseCasesModule
 import ldev.net.d2.app.assistant.android.infra.dagger.scope.SingleIn
+import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
 
 @SingleIn(AppCoreComponent::class)
 @Component(dependencies = [CoreComponent::class], modules = [UseCasesModule::class])

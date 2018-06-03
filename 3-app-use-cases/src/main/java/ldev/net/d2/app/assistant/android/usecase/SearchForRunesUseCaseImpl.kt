@@ -16,12 +16,13 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ldev.net.d2rw.datasource.adapter
-
+package ldev.net.d2.app.assistant.android.usecase
 
 import ldev.net.d2.items.core.entity.Rune
-import ldev.net.d2rw.datasource.local.room.entity.Gem
-import ldev.net.d2.items.core.entity.Gem as ModelGem
+import ldev.net.d2.items.core.service.entity.RuneService
 
-internal fun Gem.toGem(): ModelGem = ModelGem(code)
-internal fun Gem.toRune(): Rune = Rune(code, letter!!)
+class SearchForRunesUseCaseImpl(private val runeService: RuneService) : SearchForRunesUseCase {
+
+    override fun getAllAvailableRunes(): List<Rune> = runeService.getAllRunes()
+    override fun getRune(runeId: String): Rune = runeService.getRune(runeId)
+}

@@ -33,8 +33,8 @@ class D22AApp : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        val d2RWAppInfra = AppInfra(this)
-        activityInjector = d2RWAppInfra.activityInjector
+        val appInfra = AppInfra(this)
+        activityInjector = appInfra.activityInjector
     }
 
 

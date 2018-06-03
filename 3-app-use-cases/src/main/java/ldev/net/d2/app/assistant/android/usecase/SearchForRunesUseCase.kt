@@ -16,11 +16,12 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ldev.net.d2.app.assistant.android.core.usecase
+package ldev.net.d2.app.assistant.android.usecase
 
 import ldev.net.d2.items.core.entity.Rune
-import ldev.net.d2.items.core.service.entity.RuneService
 
-class SearchForRunesUseCaseImpl(private val runeService: RuneService) : SearchForRunesUseCase {
-    override fun getAllAvailableRunes(): List<Rune> = runeService.getAllRunes()
+interface SearchForRunesUseCase {
+    fun getAllAvailableRunes(): List<Rune>
+
+    fun getRune(runeId: String): Rune
 }

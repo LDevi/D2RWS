@@ -23,8 +23,8 @@ import android.app.Application
 import dagger.Module
 import dagger.Provides
 import dagger.android.AndroidInjector
-import ldev.net.d2.app.assistant.android.core.usecase.SearchForRunesUseCase
 import ldev.net.d2.app.assistant.android.feature.runes.RunesFeature
+import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
 
 @Module
 class PresentationModule {

@@ -22,9 +22,9 @@ import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
-import ldev.net.d2.app.assistant.android.core.usecase.SearchForRunesUseCase
 import ldev.net.d2.app.assistant.android.feature.runes.RunesFeature
 import ldev.net.d2.app.assistant.android.feature.runes.di.dagger.module.ActivityInjectorMap
+import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
 import javax.inject.Singleton
 
 
