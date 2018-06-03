@@ -21,8 +21,8 @@ package ldev.net.d2.app.assistant.android.feature.runes
 import android.app.Activity
 import android.app.Application
 import dagger.android.DispatchingAndroidInjector
-import ldev.net.d2.app.assistant.android.core.usecase.SearchForRunesUseCase
 import ldev.net.d2.app.assistant.android.feature.runes.di.dagger.component.DaggerPresentationAppComponent
+import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
 import javax.inject.Inject
 
 class RunesFeature {

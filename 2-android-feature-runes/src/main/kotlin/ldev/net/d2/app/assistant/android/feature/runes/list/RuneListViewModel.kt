@@ -20,7 +20,7 @@ package ldev.net.d2.app.assistant.android.feature.runes.list
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import ldev.net.d2.app.assistant.android.core.usecase.SearchForRunesUseCase
+import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
 import ldev.net.d2.items.core.entity.Rune
 import javax.inject.Inject
 
