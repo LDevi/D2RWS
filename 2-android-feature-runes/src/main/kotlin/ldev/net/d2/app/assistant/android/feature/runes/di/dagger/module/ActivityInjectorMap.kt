@@ -20,6 +20,7 @@ package ldev.net.d2.app.assistant.android.feature.runes.di.dagger.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import ldev.net.d2.app.assistant.android.feature.runes.details.RuneDetailsActivity
 import ldev.net.d2.app.assistant.android.feature.runes.list.RuneListActivity
 
 @Module
@@ -27,4 +28,7 @@ abstract class ActivityInjectorMap {
 
     @ContributesAndroidInjector
     abstract fun contributeRuneListActivity(): RuneListActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeRuneDetailsActivity(): RuneDetailsActivity
 }
