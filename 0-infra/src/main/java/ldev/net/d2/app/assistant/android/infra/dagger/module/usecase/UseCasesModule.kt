@@ -20,8 +20,8 @@ package ldev.net.d2.app.assistant.android.infra.dagger.module.usecase
 
 import dagger.Module
 import dagger.Provides
-import ldev.net.d2.app.assistant.android.core.usecase.SearchForRunesUseCase
-import ldev.net.d2.app.assistant.android.core.usecase.SearchForRunesUseCaseImpl
+import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
+import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCaseImpl
 import ldev.net.d2.items.core.service.entity.RuneService
 
 @Module
