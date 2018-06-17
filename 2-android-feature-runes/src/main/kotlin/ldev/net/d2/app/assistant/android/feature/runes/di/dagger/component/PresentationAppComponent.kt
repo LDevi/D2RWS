@@ -24,13 +24,15 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import ldev.net.d2.app.assistant.android.feature.runes.RunesFeature
 import ldev.net.d2.app.assistant.android.feature.runes.di.dagger.module.ActivityInjectorMap
+import ldev.net.d2.app.assistant.android.feature.runes.di.dagger.module.AndroidContextModule
 import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
 import javax.inject.Singleton
 
 
 @Singleton
 @Component(modules = [AndroidInjectionModule::class,
-    ActivityInjectorMap::class
+    ActivityInjectorMap::class,
+AndroidContextModule::class
 ])
 interface PresentationAppComponent {
 

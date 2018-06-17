@@ -20,8 +20,31 @@ package ldev.net.d2.datasource.adapter
 
 
 import ldev.net.d2.datasource.local.room.entity.Gem
+import ldev.net.d2.items.core.entity.Modifier
 import ldev.net.d2.items.core.entity.Rune
 import ldev.net.d2.items.core.entity.Gem as ModelGem
 
-internal fun Gem.toGem(): ModelGem = ModelGem(code)
-internal fun Gem.toRune(): Rune = Rune(code, letter!!)
+internal fun Gem.toGem() = ModelGem(code)
+internal fun Gem.toRune() = Rune(code, letter!!, levelreq, code.substring(1).toInt(), weaponMods, helmMods, shieldMods)
+
+private val Gem.weaponMods: List<Modifier>
+    get() {
+        val weaponMod1 = weaponMod1Code?.let { Modifier(it, weaponMod1Param?.toIntOrNull(), weaponMod1Min!!.toInt(), weaponMod1Max!!.toInt()) }
+        val weaponMod2 = weaponMod2Code?.let { Modifier(it, weaponMod2Param?.toIntOrNull(), weaponMod2Min!!.toInt(), weaponMod2Max!!.toInt()) }
+        val weaponMod3 = weaponMod2Code?.let { Modifier(it, weaponMod3Param?.toIntOrNull(), weaponMod3Min!!.toInt(), weaponMod3Max!!.toInt()) }
+        return listOfNotNull(weaponMod1, weaponMod2, weaponMod3)
+    }
+private val Gem.helmMods: List<Modifier>
+    get() {
+        val helmMod1 = helmMod1Code?.let { Modifier(it, helmMod1Param?.toIntOrNull(), helmMod1Min!!.toInt(), helmMod1Max!!.toInt()) }
+        val helmMod2 = helmMod2Code?.let { Modifier(it, helmMod2Param?.toIntOrNull(), helmMod2Min!!.toInt(), helmMod2Max!!.toInt()) }
+        val helmMod3 = helmMod3Code?.let { Modifier(it, helmMod3Param?.toIntOrNull(), helmMod3Min!!.toInt(), helmMod3Max!!.toInt()) }
+        return listOfNotNull(helmMod1, helmMod2, helmMod3)
+    }
+private val Gem.shieldMods: List<Modifier>
+    get() {
+        val shieldMod1 = shieldMod1Code?.let { Modifier(it, shieldMod1Param?.toIntOrNull(), shieldMod1Min!!.toInt(), shieldMod1Max!!.toInt()) }
+        val shieldMod2 = shieldMod2Code?.let { Modifier(it, shieldMod2Param?.toIntOrNull(), shieldMod2Min!!.toInt(), shieldMod2Max!!.toInt()) }
+        val shieldMod3 = shieldMod3Code?.let { Modifier(it, shieldMod3Param?.toIntOrNull(), shieldMod3Min!!.toInt(), shieldMod3Max!!.toInt()) }
+        return listOfNotNull(shieldMod1, shieldMod2, shieldMod3)
+    }
