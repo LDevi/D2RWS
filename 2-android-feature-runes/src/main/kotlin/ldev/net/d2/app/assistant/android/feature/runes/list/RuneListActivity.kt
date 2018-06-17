@@ -29,6 +29,7 @@ import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_socketable_list.*
 import kotlinx.android.synthetic.main.list_item_socketable_view.view.*
 import ldev.net.d2.app.assistant.android.feature.R
+import ldev.net.d2.app.assistant.android.feature.runes.details.RuneDetailsIntent
 import ldev.net.d2.app.assistant.android.feature.runes.di.dagger.tools.ViewModelFactory
 import ldev.net.d2.app.assistant.android.feature.runes.extention.toIcon
 import ldev.net.d2.app.assistant.android.resources.extension.android.inflate
@@ -50,10 +51,10 @@ class RuneListActivity : AppCompatActivity() {
         class.java)
         setContentView(R.layout.activity_socketable_list)
 
-        runesRecyclerView.adapter = SocketableAdapter()
+
         runeListViewModel.runeList.observe(this, Observer {
             if (it != null) {
-                (runesRecyclerView.adapter as SocketableAdapter).updateData(it.runeList)
+                runesRecyclerView.adapter = SocketableAdapter(it.runeList, { rune: Rune -> onRuneSelected(rune) })
             }
         })
         doAsync {
@@ -61,11 +62,15 @@ class RuneListActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun onRuneSelected(rune: Rune) {
+        startActivity(RuneDetailsIntent(rune))
+    }
 }
 
-class SocketableAdapter(private var runeList: List<Rune> = ArrayList()) : RecyclerView.Adapter<SocketableAdapter.ViewHolder>() {
+class SocketableAdapter(private val runeList: List<Rune>, private val clickListener: (Rune) -> Unit) : RecyclerView.Adapter<SocketableAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(runeList[position])
+        holder.bind(runeList[position], clickListener)
     }
 
     override fun getItemCount(): Int = runeList.size
@@ -74,16 +79,13 @@ class SocketableAdapter(private var runeList: List<Rune> = ArrayList()) : Recycl
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(rune: Rune) = with(itemView) {
-            runeIcon.setImageResource(rune.toIcon(context))
-            runeName.text = rune.name
+        fun bind(rune: Rune, clickListener: (Rune) -> Unit) {
+            with(itemView) {
+                runeIcon.setImageResource(rune.toIcon(context))
+                runeName.text = rune.name
+                setOnClickListener { clickListener(rune) }
+            }
         }
     }
-
-    fun updateData(runeList: List<Rune>) {
-        this.runeList = runeList
-        notifyDataSetChanged()
-    }
-
 }
 

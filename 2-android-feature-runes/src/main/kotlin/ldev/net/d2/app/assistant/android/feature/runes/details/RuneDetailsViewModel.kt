@@ -18,17 +18,25 @@
 
 package ldev.net.d2.app.assistant.android.feature.runes.details
 
+import android.app.Application
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import ldev.net.d2.app.assistant.android.feature.runes.extention.toIcon
 import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
 import javax.inject.Inject
 
-class RuneDetailsViewModel @Inject constructor(var searchForRunesUseCase: SearchForRunesUseCase) : ViewModel() {
+class RuneDetailsViewModel @Inject constructor(private val searchForRunesUseCase: SearchForRunesUseCase, private val application: Application) : ViewModel() {
 
     var details: MutableLiveData<RuneDetailsActivity.Model> = MutableLiveData()
 
     fun loadDetails(runeId: String) {
+
         val rune = searchForRunesUseCase.getRune(runeId)
-        details.postValue(RuneDetailsActivity.Model(rune.id, rune.id.substring(1).toInt(), rune.name, 0))
+        val toList = rune.weaponMods.map { "${it.code} =  ${it.param} : ${it.min} - ${it.max}" }.toList()
+        details.postValue(RuneDetailsActivity.Model(runeName = rune.name,
+                runeDrawableResIcon = rune.toIcon(application),
+                runeMinLevel = rune.minLevel,
+                runeNumber = rune.runeNumber,
+                runeWeaponModifiers = toList))
     }
 }

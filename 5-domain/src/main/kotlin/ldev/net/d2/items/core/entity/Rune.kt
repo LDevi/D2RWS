@@ -18,4 +18,10 @@
 
 package ldev.net.d2.items.core.entity
 
-data class Rune(val id: String, val name: String)
+data class Rune(val id: String,
+                val name: String,
+                val minLevel:Int,
+                val runeNumber:Int,
+                val weaponMods:List<Modifier>,
+                val helmMods:List<Modifier>,
+                val shieldMods:List<Modifier>)
