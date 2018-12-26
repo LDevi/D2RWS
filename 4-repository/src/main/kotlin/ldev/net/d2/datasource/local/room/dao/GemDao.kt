@@ -35,5 +35,5 @@ interface GemDao {
     fun getAllRunes(): List<Gem>
 
     @Query("select * from gems where code = :code")
-    fun findGemByCode(code: String): Gem
+    fun findGemByCode(code: String): Gem?
 }

@@ -28,6 +28,6 @@ import ldev.net.d2.items.core.entity.Rune
 class GemRepository constructor(val database: Database) : GemDataSource {
     override fun getAllGems(): List<Gem> = database.gemDao().getAllGems().map { it.toGem() }
     override fun getAllRunes(): List<Rune> = database.gemDao().getAllRunes().map { it.toRune() }
-    override fun getRune(runeId: String): Rune = database.gemDao().findGemByCode(runeId).toRune()
+    override fun getRune(runeId: String) = database.gemDao().findGemByCode(runeId)?.toRune()
 
 }

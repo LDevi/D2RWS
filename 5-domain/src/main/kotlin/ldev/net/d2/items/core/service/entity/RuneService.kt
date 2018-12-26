@@ -23,5 +23,5 @@ import ldev.net.d2.items.core.entity.Rune
 
 class RuneService constructor(private val gemDataSource: GemDataSource) {
     fun getAllRunes(): List<Rune> = gemDataSource.getAllRunes()
-    fun getRune(runeId: String): Rune = gemDataSource.getRune(runeId)
+    fun getRune(runeId: String) = gemDataSource.getRune(runeId)
 }

@@ -24,5 +24,5 @@ import ldev.net.d2.items.core.entity.Rune
 interface GemDataSource {
     fun getAllGems(): List<Gem>
     fun getAllRunes(): List<Rune>
-    fun getRune(runeId: String): Rune
+    fun getRune(runeId: String): Rune?
 }

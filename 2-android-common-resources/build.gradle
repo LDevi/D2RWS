@@ -19,12 +19,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion compile_sdk_version
     buildToolsVersion build_tools_version
     defaultConfig {
-       // versionCode version_code
+        // versionCode version_code
         //versionName version_name
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
@@ -45,9 +47,20 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.android.support:appcompat-v7:$dep_android_support_library_version"
+    api "com.android.support:appcompat-v7:$dep_android_support_library_version"
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$dep_kotlin_version"
+    api "org.jetbrains.anko:anko:$dep_android_anko_version"
+    api "com.google.dagger:dagger:$dep_dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dep_dagger_version"
+    api "com.google.dagger:dagger-android:$dep_dagger_version"
+    api "com.google.dagger:dagger-android-support:$dep_dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dep_dagger_version"
+
+    api "com.android.support:appcompat-v7:$dep_android_support_library_version"
+    api 'javax.annotation:jsr250-api:1.0'
+    api "android.arch.lifecycle:extensions:$dep_android_lifecycle_version"
+    kapt "android.arch.lifecycle:compiler:$dep_android_lifecycle_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$dep_kotlin_version"
 
     testImplementation "junit:junit:$dep_test_junit_version"
     androidTestImplementation "com.android.support.test:runner:$dep_android_test_support_test_runner_version"

@@ -24,5 +24,5 @@ import ldev.net.d2.items.core.service.entity.RuneService
 class SearchForRunesUseCaseImpl(private val runeService: RuneService) : SearchForRunesUseCase {
 
     override fun getAllAvailableRunes(): List<Rune> = runeService.getAllRunes()
-    override fun getRune(runeId: String): Rune = runeService.getRune(runeId)
+    override fun getRune(runeId: String) = runeService.getRune(runeId)
 }

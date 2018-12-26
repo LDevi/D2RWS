@@ -16,17 +16,15 @@
  *     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ldev.net.d2.app.assistant.android.feature.runes.di.dagger.tools
+package ldev.net.d2.app.assistant.android.di.tools
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import dagger.Lazy
 import javax.inject.Inject
 
-class ViewModelFactory<Type : ViewModel> @Inject constructor(private val vm: Lazy<Type>) : ViewModelProvider.Factory {
+class ViewModelFactory<T : ViewModel> @Inject constructor(private val viewModel: T) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return vm.get() as T
-    }
+    override fun <T : ViewModel> create(modelClass: Class<T>) = viewModel as T
+
 }

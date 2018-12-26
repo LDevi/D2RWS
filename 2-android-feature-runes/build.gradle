@@ -18,6 +18,7 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
@@ -52,21 +53,14 @@ dependencies {
     implementation project(':3-app-use-cases')
     implementation project(':2-android-common-resources')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.anko:anko:$dep_android_anko_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$dep_kotlin_version"
-    implementation "android.arch.lifecycle:extensions:$dep_android_lifecycle_version"
-    implementation "com.google.dagger:dagger:$dep_dagger_version"
+    api "com.google.dagger:dagger:$dep_dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dep_dagger_version"
     api "com.google.dagger:dagger-android:$dep_dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dep_dagger_version"
+    api "com.google.dagger:dagger-android-support:$dep_dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dep_dagger_version"
-    implementation 'javax.annotation:jsr250-api:1.0'
     implementation "com.android.support:design:$dep_android_support_library_version"
     implementation "com.android.support:recyclerview-v7:$dep_android_support_library_version"
     implementation "com.android.support.constraint:constraint-layout:$dep_android_constraint_layout_version"
-    implementation "com.android.support:appcompat-v7:$dep_android_support_library_version"
-    implementation "android.arch.lifecycle:extensions:$dep_android_lifecycle_version"
-    kapt "android.arch.lifecycle:compiler:$dep_android_lifecycle_version"
     testImplementation "junit:junit:$dep_test_junit_version"
     androidTestImplementation "com.android.support.test:runner:$dep_android_test_support_test_runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$dep_android_test_esspresso_core_version"

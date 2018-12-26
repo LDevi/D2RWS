@@ -16,70 +16,105 @@
   ~     along with Diablo-2-App-Assistant.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <ImageView
         android:id="@+id/runeImage"
         android:layout_width="76dp"
         android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:contentDescription="@string/accessibility_rune_image_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_r11_amn" />
+        tools:src="@drawable/ic_r11_amn"
+        />
 
     <TextView
         android:id="@+id/runeName"
         android:layout_width="69dp"
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
-        android:text="runeName"
         app:layout_constraintBottom_toTopOf="@+id/runeNumber"
         app:layout_constraintStart_toStartOf="@+id/runeNumber"
-        app:layout_constraintTop_toTopOf="@+id/runeImage" />
+        app:layout_constraintTop_toTopOf="@+id/runeImage"
+        tools:text="runeName"
+        />
 
     <TextView
         android:id="@+id/runeNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:text="runeNumber"
+        android:layout_marginLeft="8dp"
         app:layout_constraintBottom_toTopOf="@+id/runeLvl"
         app:layout_constraintStart_toEndOf="@+id/runeImage"
         app:layout_constraintTop_toBottomOf="@+id/runeName"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="runeNumber"
+        />
 
     <TextView
         android:id="@+id/runeLvl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="runeLvl"
         app:layout_constraintBottom_toBottomOf="@+id/runeImage"
         app:layout_constraintStart_toStartOf="@+id/runeNumber"
-        app:layout_constraintTop_toBottomOf="@+id/runeNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/runeNumber"
+        tools:text="runeLvl"
+        />
 
     <TextView
         android:id="@+id/weaponMods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        tools:text="weaponMods"
-        app:layout_constraintBottom_toBottomOf="@+id/runeLvl"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/runeLvl"
-        app:layout_constraintTop_toTopOf="@+id/runeLvl" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/runeImage"
+        tools:text="weaponMods"
+        />
+    <TextView
+        android:id="@+id/shieldMods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helmMods"
+        tools:text="shieldMods"
+        />
+    <TextView
+        android:id="@+id/helmMods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weaponMods"
+        tools:text="helmMods"
+        />
 </android.support.constraint.ConstraintLayout>
