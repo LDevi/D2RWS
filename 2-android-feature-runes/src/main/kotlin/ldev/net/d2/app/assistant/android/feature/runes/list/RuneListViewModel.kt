@@ -18,6 +18,7 @@
 
 package ldev.net.d2.app.assistant.android.feature.runes.list
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
@@ -26,12 +27,12 @@ import javax.inject.Inject
 
 class RuneListViewModel @Inject constructor(var searchForRunesUseCase: SearchForRunesUseCase) : ViewModel() {
 
-    var runeList: MutableLiveData<RuneListActivity.Model> = MutableLiveData()
+    data class Model(val runeList: List<Rune>)
 
-    fun loadRunes() {
-        runeList.postValue(searchForRunesUseCase.getAllAvailableRunes().toModel())
-    }
+    private val _runeList: MutableLiveData<Model> = MutableLiveData()
+    val runeList: LiveData<Model> = _runeList
 
-    private fun List<Rune>.toModel(): RuneListActivity.Model = RuneListActivity.Model(this)
+    fun loadRunes() = _runeList.postValue(Model(searchForRunesUseCase.getAllAvailableRunes()))
+
 }
 

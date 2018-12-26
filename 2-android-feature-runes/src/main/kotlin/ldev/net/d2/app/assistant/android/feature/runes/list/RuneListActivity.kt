@@ -19,7 +19,6 @@
 package ldev.net.d2.app.assistant.android.feature.runes.list
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
@@ -28,47 +27,52 @@ import android.view.ViewGroup
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_socketable_list.*
 import kotlinx.android.synthetic.main.list_item_socketable_view.view.*
+import ldev.net.d2.app.assistant.android.di.tools.ViewModelFactory
 import ldev.net.d2.app.assistant.android.feature.R
-import ldev.net.d2.app.assistant.android.feature.runes.details.RuneDetailsIntent
-import ldev.net.d2.app.assistant.android.feature.runes.di.dagger.tools.ViewModelFactory
+import ldev.net.d2.app.assistant.android.feature.runes.details.RuneDetailsActivity
 import ldev.net.d2.app.assistant.android.feature.runes.extention.toIcon
 import ldev.net.d2.app.assistant.android.resources.extension.android.inflate
+import ldev.net.d2.app.assistant.android.resources.extension.android.viewModelProvider
 import ldev.net.d2.items.core.entity.Rune
 import org.jetbrains.anko.doAsync
 import javax.inject.Inject
 
 class RuneListActivity : AppCompatActivity() {
-    @Inject
-    protected lateinit var runeListViewModelFactory: ViewModelFactory<RuneListViewModel>
-    private lateinit var runeListViewModel: RuneListViewModel
 
-    data class Model(val runeList: List<Rune>)
+    @Inject
+    lateinit var runeListViewModelFactory: ViewModelFactory<RuneListViewModel>
+
+    private val runeListViewModel: RuneListViewModel by lazy {
+        viewModelProvider(runeListViewModelFactory)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        runeListViewModel = ViewModelProviders.of(this, runeListViewModelFactory).get(RuneListViewModel::
-        class.java)
         setContentView(R.layout.activity_socketable_list)
 
-
-        runeListViewModel.runeList.observe(this, Observer {
-            if (it != null) {
-                runesRecyclerView.adapter = SocketableAdapter(it.runeList, { rune: Rune -> onRuneSelected(rune) })
+        runeListViewModel.runeList.observe(this, Observer { model ->
+            model?.let {
+                with(runesRecyclerView) {
+                    adapter = SocketableAdapter(it.runeList) { rune: Rune ->
+                        startActivity(RuneDetailsActivity.intent(this@RuneListActivity, RuneDetailsActivity.Input(rune.id)))
+                    }
+                    adapter.notifyDataSetChanged()
+                }
             }
         })
+
         doAsync {
             runeListViewModel.loadRunes()
         }
 
     }
-
-    private fun onRuneSelected(rune: Rune) {
-        startActivity(RuneDetailsIntent(rune))
-    }
 }
 
-class SocketableAdapter(private val runeList: List<Rune>, private val clickListener: (Rune) -> Unit) : RecyclerView.Adapter<SocketableAdapter.ViewHolder>() {
+class SocketableAdapter(private val runeList: List<Rune>,
+                        private val clickListener: (Rune) -> Unit) : RecyclerView.Adapter<SocketableAdapter.ViewHolder>() {
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(runeList[position], clickListener)
     }
@@ -76,7 +80,6 @@ class SocketableAdapter(private val runeList: List<Rune>, private val clickListe
     override fun getItemCount(): Int = runeList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(parent.inflate(R.layout.list_item_socketable_view))
-
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(rune: Rune, clickListener: (Rune) -> Unit) {
@@ -88,4 +91,3 @@ class SocketableAdapter(private val runeList: List<Rune>, private val clickListe
         }
     }
 }
-

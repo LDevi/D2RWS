@@ -23,5 +23,5 @@ import ldev.net.d2.items.core.entity.Rune
 interface SearchForRunesUseCase {
     fun getAllAvailableRunes(): List<Rune>
 
-    fun getRune(runeId: String): Rune
+    fun getRune(runeId: String): Rune?
 }

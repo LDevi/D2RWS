@@ -18,25 +18,20 @@
 
 package ldev.net.d2.app.assistant.android.feature.runes.details
 
-import android.app.Application
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import ldev.net.d2.app.assistant.android.feature.runes.extention.toIcon
 import ldev.net.d2.app.assistant.android.usecase.SearchForRunesUseCase
+import ldev.net.d2.items.core.entity.Rune
 import javax.inject.Inject
 
-class RuneDetailsViewModel @Inject constructor(private val searchForRunesUseCase: SearchForRunesUseCase, private val application: Application) : ViewModel() {
+class RuneDetailsViewModel @Inject constructor(private val searchForRunesUseCase: SearchForRunesUseCase) : ViewModel() {
 
-    var details: MutableLiveData<RuneDetailsActivity.Model> = MutableLiveData()
+    private val _details = MutableLiveData<Rune>()
+    val details: LiveData<Rune> = _details
 
-    fun loadDetails(runeId: String) {
-
-        val rune = searchForRunesUseCase.getRune(runeId)
-        val toList = rune.weaponMods.map { "${it.code} =  ${it.param} : ${it.min} - ${it.max}" }.toList()
-        details.postValue(RuneDetailsActivity.Model(runeName = rune.name,
-                runeDrawableResIcon = rune.toIcon(application),
-                runeMinLevel = rune.minLevel,
-                runeNumber = rune.runeNumber,
-                runeWeaponModifiers = toList))
-    }
+    fun loadDetails(runeId: String) =
+            searchForRunesUseCase.getRune(runeId)?.let { rune ->
+                _details.postValue(rune)
+            }
 }

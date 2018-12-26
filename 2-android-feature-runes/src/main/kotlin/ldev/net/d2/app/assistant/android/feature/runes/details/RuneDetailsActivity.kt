@@ -19,63 +19,71 @@
 package ldev.net.d2.app.assistant.android.feature.runes.details
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.DrawableRes
 import android.support.v7.app.AppCompatActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_rune_details.*
+import ldev.net.d2.app.assistant.android.di.tools.ViewModelFactory
 import ldev.net.d2.app.assistant.android.feature.R
-import ldev.net.d2.app.assistant.android.feature.runes.di.dagger.tools.ViewModelFactory
 import ldev.net.d2.app.assistant.android.feature.runes.extention.toIcon
-import ldev.net.d2.items.core.entity.Rune
+import ldev.net.d2.app.assistant.android.resources.extension.android.toInput
+import ldev.net.d2.app.assistant.android.resources.extension.android.viewModelProvider
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.image
 import java.io.Serializable
 import javax.inject.Inject
 
-fun Context.RuneDetailsIntent(rune:Rune): Intent =
-    Intent(this,RuneDetailsActivity::class.java).apply {
-        putExtra(INTENT_RUNE_ID,rune.id)
-    }
-
-private const val INTENT_RUNE_ID = "INTENT_RUNE_ID"
-
 class RuneDetailsActivity : AppCompatActivity() {
 
-
     @Inject
-    protected lateinit var runeDetailsViewModelFactory: ViewModelFactory<RuneDetailsViewModel>
-    private lateinit var runeDetailsViewModel: RuneDetailsViewModel
+    lateinit var viewModelFactory: ViewModelFactory<RuneDetailsViewModel>
+    private val viewModel: RuneDetailsViewModel by lazy {
+        viewModelProvider(viewModelFactory)
+    }
 
-    data class Model(val runeName : String,
-                     @DrawableRes val runeDrawableResIcon : Int,
-                     val runeNumber : Int,
-                     val runeMinLevel : Int,
-                     val runeWeaponModifiers : List<String>)
+
+    data class Input(val runeId: String) : Serializable
+
+    private val input by lazy {
+        intent.toInput<Input>()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        runeDetailsViewModel = ViewModelProviders.of(this, runeDetailsViewModelFactory).get(RuneDetailsViewModel::
-        class.java)
         setContentView(R.layout.activity_rune_details)
 
-        runeDetailsViewModel.details.observe(this, Observer {
-            if (it != null) {
-                runeName.text=it.runeName
-                runeImage.setImageResource(it.runeDrawableResIcon)
-                runeNumber.text = "#" + it.runeNumber
-                runeLvl.text ="Min level : "+ it.runeMinLevel.toString()
-                weaponMods.text = it.runeWeaponModifiers.toString()
+        viewModel.details.observe(this, Observer { model ->
+            model?.let {
+                runeName.text = it.name
+                runeImage.setImageResource(it.toIcon(this))
+                runeImage.contentDescription = getString(R.string.accessibility_rune_image_description, it.name)
+                runeNumber.text = getString(R.string.rune_number_format, it.runeNumber)
+                runeLvl.text = getString(R.string.rune_min_level, it.minLevel)
+                weaponMods.text = it.weaponMods.map { mod ->
+                    "${mod.code} =  ${mod.param} : ${mod.param?.min ?: "null"} - ${mod.param?.max ?: "null"}"
+                }.toString()
+                helmMods.text = it.helmMods.map { mod ->
+                    "${mod.code} =  ${mod.param} : ${mod.param?.min ?: "null"} - ${mod.param?.max ?: "null"}"
+                }.toString()
+                shieldMods.text = it.shieldMods.map { mod ->
+                    "${mod.code} =  ${mod.param} : ${mod.param?.min ?: "null"} - ${mod.param?.max ?: "null"}"
+                }.toString()
             }
         })
         doAsync {
-            val runeId = intent.getStringExtra(INTENT_RUNE_ID)
-            requireNotNull(runeId) { "no rune_id provided in Intent extras" }
-            runeId?.let {runeDetailsViewModel.loadDetails(runeId)}
+            viewModel.loadDetails(input.runeId)
         }
     }
+
+    companion object {
+        fun intent(context: Context, input: Input): Intent =
+                Intent(context, RuneDetailsActivity::class.java).putExtra(
+                        Input::class.java.name,
+                        input
+                )
+    }
 }
+
+
