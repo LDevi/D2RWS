@@ -23,7 +23,5 @@ import ldev.net.d2.items.core.datasource.DataSource
 import ldev.net.d2.items.core.datasource.entity.GemDataSource
 
 class DataSourceImpl(val database: Database) : DataSource {
-    override var gemDataSource: GemDataSource
-        get() = GemRepository(database)
-        set(value) {}
+    override var gemDataSource: GemDataSource = GemRepository(database)
 }
