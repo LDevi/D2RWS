@@ -49,7 +49,7 @@ android {
 dependencies {
     implementation project(':5-domain')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$dep_kotlin_version"
-    implementation "android.arch.persistence.room:runtime:$dep_android_room_version"
+    api "android.arch.persistence.room:runtime:$dep_android_room_version"
     implementation "android.arch.persistence.room:rxjava2:$dep_android_room_version"
     kapt "android.arch.persistence.room:compiler:$dep_android_room_version"
     testImplementation "junit:junit:$dep_test_junit_version"
