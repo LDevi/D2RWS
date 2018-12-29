@@ -16,11 +16,11 @@ The development flow used on this project is based on [this blog post by Vincent
 
 In a few words :
 
-- the `master` branch contains the code published in production
-- the `hotfix` branch to develop patches for production
-- the `release` branch contains the next version (used for google play store in beta version)
-- the `develop` branch contains the version being developed
-- `feature branches` are for each and every increments, it is actually only on these branches that code is pushed. These branches, when the increment is done, are merged to `develop` via push requests.
+- the `master` branch contains the code published in production,
+- the `hotfix` branch to develop patches for production,
+- the `release` branch contains the next version (used for google play store in beta version),
+- the `develop` branch contains the version being developed,
+- `other branches` are for each and every increments, it is actually only on these branches that code is pushed. These branches, when the increment is done, are merged to one of the fourth other branches via [pull requests](https://github.com/LDevi/Diablo-2-App-Assistant/pulls).
 
 So make sure you are branching from the right place.
 
