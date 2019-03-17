@@ -17,7 +17,7 @@
  */
 
 project.ext {
-    dep_gradle_android_plugin_version="3.2.1"
+    dep_gradle_android_plugin_version="3.3.2"
     dep_kotlin_version = "1.3.11"
     dep_dagger_version = "2.14.1"
     dep_test_junit_version = "4.12"
